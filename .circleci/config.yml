@@ -18,9 +18,7 @@ jobs:
 
     steps:
       - checkout:
-       pre:
-      - mkdir -p ~/cats-client/src
-      - cd ~/cats-client/src
+        - run: cd cats-client && npm install
 
       # Download and cache dependencies
       - restore_cache:
