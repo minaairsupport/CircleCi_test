@@ -18,7 +18,6 @@ jobs:
 
     steps:
       - checkout:
-        - run: cd cats-client && npm install
 
       # Download and cache dependencies
       - restore_cache:
