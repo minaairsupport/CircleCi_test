@@ -17,7 +17,7 @@ jobs:
     working_directory: ~/repo/cats-client
 
     steps:
-      - checkout
+      - checkout:
        pre:
       - mkdir -p ~/cats-client/src
       - cd ~/cats-client/src
