@@ -8,10 +8,11 @@ defaults: &defaults
     - image: circleci/node:8-browsers
   working_directory: ~/repo/cats-client
 
+version: 2.1
+
 orbs:
   percy: percy/agent@volatile
 
-version: 2.1
 jobs:
   checkout_code:
     <<: *defaults
