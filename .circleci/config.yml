@@ -10,6 +10,7 @@ jobs:
   test_node_8:
     docker:
       - image: circleci/node:8-browsers
+          
     environment:
       PERCY_ENABLE: 0
     <<: *default_test_steps
@@ -21,8 +22,11 @@ jobs:
   release:
     docker:
       - image: circleci/node:8
+
+      working_directory: ~/repo/sub_folder
     steps:
       - checkout
+        path: ~/repo 
       - run: yarn
       - run: npx semantic-release
 
