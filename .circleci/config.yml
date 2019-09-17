@@ -36,6 +36,7 @@ jobs:
           path: ~/repo
 
       - run: yarn
+      - run: ls
       - run: npx semantic-release
 
 workflows:
