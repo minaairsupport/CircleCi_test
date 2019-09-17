@@ -1,6 +1,8 @@
 version: 2.1
 
 default_test_steps: &default_test_steps
+
+  working_directory: ~/repo/cats-client
   steps:
     - checkout:
         path: ~/repo
