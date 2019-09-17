@@ -36,7 +36,7 @@ jobs:
             - v1-deps-
       - run:
           name: npm install
-          command: npm install -g @percy/agent && npm install --non-interactive
+          command: sudo npm install -g @percy/agent && sudo npm install --non-interactive
       - save_cache:
           key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
