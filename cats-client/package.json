@@ -11,7 +11,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "percy exec -- wdio wdio.conf.js",
     "predeploy": "npm run build",
     "deploy": "aws s3 sync build/ s3://cats-app --delete",
     "postdeploy": "aws cloudfront create-invalidation --distribution-id E2Q8LPKLN5A9GK --paths '/*'",
