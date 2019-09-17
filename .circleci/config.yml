@@ -2,8 +2,8 @@ version: 2.1
 
 default_test_steps: &default_test_steps
   steps:
-    - checkout
-         path: ~/repo
+    - checkout:
+        path: ~/repo
     - run: yarn
     - run: yarn test
 
