@@ -10,7 +10,7 @@ jobs:
   test_node_8:
     docker:
       - image: circleci/node:8-browsers
-          
+
     environment:
       PERCY_ENABLE: 0
     <<: *default_test_steps
@@ -32,8 +32,9 @@ jobs:
     working_directory: ~/repo/cars-client
 
     steps:
-      - checkout
-        path: ~/repo 
+      - checkout:
+          path: ~/repo
+
       - run: yarn
       - run: npx semantic-release
 
