@@ -1,72 +1,38 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-
-defaults: &defaults
-  docker:
-    - image: circleci/node:8-browsers
-  working_directory: ~/repo/cats-client
-
 version: 2.1
 
-orbs:
-  percy: percy/agent@volatile
+default_test_steps: &default_test_steps
+  steps:
+    - checkout
+    - run: yarn
+    - run: yarn test
 
 jobs:
-  checkout_code:
-    <<: *defaults
+  test_node_8:
+    docker:
+      - image: circleci/node:8-browsers
+    environment:
+      PERCY_ENABLE: 0
+    <<: *default_test_steps
+  test_node_10_with_percy:
+    # We've opted this node version to be the one that runs and reports Percy's status
+    docker:
+      - image: circleci/node:10-browsers
+    <<: *default_test_steps
+  release:
+    docker:
+      - image: circleci/node:8
     steps:
-      - checkout:
-          path: ~/repo
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-
-  install_dependencies:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: .
-      - restore_cache:
-          keys:
-            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
-            - v1-deps-{{ .Branch }}-
-            - v1-deps-
-      - run:
-          name: npm install
-          command: sudo npm install -g @percy/agent
-      - save_cache:
-          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-
-  run_tests:
-    <<: *defaults
-    parallelism: 1
-    steps:
-      - attach_workspace:
-          at: .
-      - run: echo 'export PATH=~/repo/node_modules/.bin:$PATH' >> $BASH_ENV
-      - run:
-          name: Run Tests
-          command: npm build-test && npm test:parallel
+      - checkout
+      - run: yarn
+      - run: npx semantic-release
 
 workflows:
-  test_and_deploy:
+  version: 2.1
+  test_and_release:
     jobs:
-      - checkout_code
-      - install_dependencies:
+      - test_node_8
+      - test_node_10_with_percy
+      - release:
           requires:
-            - checkout_code
-      - run_tests:
-          requires:
-            - install_dependencies
-      - percy/finalize_all:
-          requires:
-            - run_tests
+            - test_node_8
+            - test_node_10_with_percy
