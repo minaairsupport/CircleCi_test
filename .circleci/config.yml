@@ -51,6 +51,3 @@ workflows:
           requires:
             - test_node_8
             - test_node_10_with_perc
-      - percy/finalize_all:
-          requires:
-           - release
