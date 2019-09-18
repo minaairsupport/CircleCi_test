@@ -19,7 +19,7 @@ describe("webdriver.io page", () => {
 
   it("should have the right title", () => {
     browser.url("https://webdriver.io");
-    // percySnapshot(browser, "sample");
+    percySnapshot(browser, "sample");
     browser.getTitle().then(function(title) {
       assert.strictEqual(
         title,
