@@ -4,6 +4,7 @@ const { percySnapshot } = require("@percy/webdriverio");
 
 describe("webdriver.io page", () => {
   let server = null;
+  const PORT = 8000;
 
   before(function() {
     // Start local server to host app under test.
