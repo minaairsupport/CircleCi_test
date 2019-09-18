@@ -18,15 +18,15 @@ describe("webdriver.io page", () => {
   //   server.close();
   // });
 
-  it("should have the right title", () => {
-    browser.url("https://webdriver.io");
-    percySnapshot(browser, "sample");
-    percySnapshot(browser, "sample2");
-    const title = browser.getTitle();
+  it("should have the right title", async () => {
+    await browser.url("https://webdriver.io");
+
+    const title = await browser.getTitle();
     assert.strictEqual(
       title,
       "WebdriverIO · Next-gen WebDriver test framework for Node.js"
     );
+    await percySnapshot(browser, "sample");
 
     // browser.getTitle().then(function(title) {
     //   assert.strictEqual(
