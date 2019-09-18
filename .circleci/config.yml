@@ -50,4 +50,4 @@ workflows:
       - release:
           requires:
             - test_node_8
-            - test_node_10_with_perc
+            - test_node_10_with_percy
