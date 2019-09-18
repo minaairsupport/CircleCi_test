@@ -27,12 +27,5 @@ describe("webdriver.io page", () => {
       "WebdriverIO · Next-gen WebDriver test framework for Node.js"
     );
     await percySnapshot(browser, "sample");
-
-    // browser.getTitle().then(function(title) {
-    //   assert.strictEqual(
-    //     title,
-    //     "WebdriverIO · Next-gen WebDriver test framework for Node.js"
-    //   );
-    // });
   });
 });
