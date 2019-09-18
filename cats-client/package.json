@@ -11,11 +11,12 @@
     "typescript": "^3.6.3"
   },
   "scripts": {
+    "start": "react-scripts start",
     "prepublishOnly": "npm run build",
     "clean": "rm -rf dist/",
     "build": "npm run clean && tsc",
     "pretest": "npm run build",
-    "test": "percy exec -- wdio wdio.conf.js"
+    "test": "percy exec -- wdio"
   },
   "eslintConfig": {
     "extends": "react-app"
