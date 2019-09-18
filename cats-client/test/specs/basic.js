@@ -11,6 +11,6 @@ describe("webdriver.io page", () => {
       title,
       "WebdriverIO · Next-gen WebDriver test framework for Node.js"
     );
-    // percySnapshot(browser, "webdriver.io page");
+    percySnapshot(browser, "webdriver.io page");
   });
 });
