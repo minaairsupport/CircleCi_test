@@ -1,49 +1,24 @@
 version: 2.1
-
-default_test_steps: &default_test_steps
-
-  working_directory: ~/repo/cats-client
-  steps:
-    - checkout:
-        path: ~/repo
-    - run: yarn
-    - run: yarn test
-
-jobs:
-  test_node_8:
+executors:
+  node:
     docker:
-      - image: circleci/node:8-browsers
-
-    environment:
-      PERCY_ENABLE: 0
-    <<: *default_test_steps
-  test_node_10_with_percy:
-    # We've opted this node version to be the one that runs and reports Percy's status
-    docker:
-      - image: circleci/node:10-browsers
-    <<: *default_test_steps
-  release:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo/cats-client
-
-    steps:
-      - checkout:
-          path: ~/repo
-
-      - run: yarn
-      - run: npx semantic-release
-
+      - image: circleci/node:10.19.0
 workflows:
-  version: 2.1
-  test_and_release:
+  version: 2
+  build_and_test:
     jobs:
-      - test_node_8
-      - test_node_10_with_percy
+      - build
+      - test
+jobs:
+  build:
+    working_directory: ~/repo/cats-client
+    executor: node
+    steps:
+      - checkout
+      - run: npm start
+  test:
+    executor: node
+    steps:
+      - checkout
+      - run: npm start
+      - run: npm run test
