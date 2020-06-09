@@ -15,7 +15,6 @@ jobs:
     executor: node
     steps:
       - checkout
-        path: ~/repo
       - run: npm start
   test:
     executor: node
