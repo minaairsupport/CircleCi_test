@@ -1,13 +1,18 @@
 version: 2.1
 
+executors:
+  node:
+    docker:
+      - image: circleci/node:10.19.0
+      
 default_test_steps: &default_test_steps
 
   working_directory: ~/repo/cats-client
+   executor: node
   steps:
     - checkout:
         path: ~/repo
     - run: npm install
-    - run: npm test
 
 jobs:
   test_node_12:
