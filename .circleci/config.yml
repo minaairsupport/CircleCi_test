@@ -6,8 +6,7 @@ default_test_steps: &default_test_steps
   steps:
     - checkout:
         path: ~/repo
-    - run: yarn
-    - run: yarn test
+    - run: npm start
 
 jobs:
   test_node_8:
@@ -38,8 +37,8 @@ jobs:
       - checkout:
           path: ~/repo
 
-      - run: yarn
-      - run: npx semantic-release
+      - run: npm test
+
 
 workflows:
   version: 2.1
