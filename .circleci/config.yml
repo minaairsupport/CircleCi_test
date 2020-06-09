@@ -12,12 +12,10 @@ workflows:
 jobs:
   build:
     working_directory: ~/repo/cats-client
-    executor: node
     steps:
       - checkout
       - run: npm start
   test:
-    executor: node
     steps:
       - checkout
       - run: npm start
