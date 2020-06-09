@@ -13,7 +13,11 @@ jobs:
     docker:
       - image: circleci/node:12
       
-    <<: *default_test_steps
+working_directory: ~/repo/cats-client
+  steps:
+    - checkout:
+        path: ~/repo
+    - run: npm install
 
 workflows:
   version: 2.1
