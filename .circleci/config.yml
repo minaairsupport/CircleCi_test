@@ -12,9 +12,7 @@ jobs:
   test_node_8:
     docker:
       - image: circleci/node:12
-
-    environment:
-      PERCY_ENABLE: 0
+      
     <<: *default_test_steps
   test_node_10_with_percy:
     # We've opted this node version to be the one that runs and reports Percy's status
