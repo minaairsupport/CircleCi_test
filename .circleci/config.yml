@@ -14,7 +14,7 @@ jobs:
     working_directory: ~/repo/cats-client
     executor: node
     steps:
-      - checkout:
+      - checkout
         path: ~/repo
       - run: npm start
   test:
