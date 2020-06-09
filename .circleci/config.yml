@@ -6,7 +6,7 @@ default_test_steps: &default_test_steps
   steps:
     - checkout:
         path: ~/repo
-    - run: npm start
+    - run: npm install
 
 jobs:
   test_node_8:
