@@ -5,20 +5,25 @@ executors:
     docker:
       - image: circleci/node:10
       
-default_test_steps: &default_test_steps
-
-  working_directory: ~/repo/cats-client
+commmands:
+ deploy_local:
+   parameters:
+      env:
+         description: run local script
+         type: string
+         default: dev
   steps:
-    - checkout:
-        path: ~/repo
-    - run: npm install
-    - run: sh deploy_local.sh
+   - sh deploy_local.sh << parameters.env >>
+
 
 jobs:
   test_node_12:
     executor: node
-      
-    <<: *default_test_steps
+  working_directory: ~/repo/cats-client
+  steps:
+    - checkout:
+        path: ~/repo
+   
 
 workflows:
   version: 2.1
