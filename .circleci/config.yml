@@ -14,9 +14,9 @@ commands:
         default: "dev"
     steps:
       - run:
-        shell: /bin/sh
-        command: |
-          deploy_local.sh << parameters.env >>
+          shell: /bin/sh
+          command: |
+            deploy_local.sh << parameters.env >>
 
 
 jobs:
