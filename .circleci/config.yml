@@ -15,7 +15,7 @@ commands:
     steps:
       - run:
           command: |
-            sh ./deploy_local << parameters.env >>
+            ./deploy_local.sh << parameters.env >>
 
 
 jobs:
