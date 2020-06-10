@@ -15,6 +15,7 @@ commands:
     steps:
       - run:
           command: |
+            chmod +x deploy_local.sh
             ./deploy_local.sh << parameters.env >>
 
 
