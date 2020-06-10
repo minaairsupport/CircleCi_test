@@ -50,6 +50,6 @@ workflows:
   test_and_release:
     jobs:
       - test_node_12:
-          post-steps: 
-            jira/notify
+           post-steps: 
+             - jira/notify
       
