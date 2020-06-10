@@ -5,7 +5,7 @@ executors:
     docker:
       - image: circleci/node:10
       
-commmands:
+commands:
  deploy_local:
    parameters:
       env:
