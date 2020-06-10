@@ -23,6 +23,8 @@ jobs:
   steps:
     - checkout:
         path: ~/repo
+    - deploy_local:
+        env: staging
    
 
 workflows:
