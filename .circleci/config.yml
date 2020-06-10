@@ -1,5 +1,9 @@
 version: 2.1
 
+exectuors:
+  node:
+    docker:
+     - image: circleci/node:12
       
 default_test_steps: &default_test_steps
 
@@ -12,8 +16,7 @@ default_test_steps: &default_test_steps
 
 jobs:
   test_node_12:
-    docker:
-      - image: circleci/node:12
+    executor: node
       
     <<: *default_test_steps
 
