@@ -25,7 +25,6 @@ jobs:
     working_directory: ~/repo/cats-client
     steps:
       - checkout
-          path: ~/repo
       - restore_cache:
         keys:
             - v1-dependencies-{{ checksum "package.json" }}
