@@ -19,7 +19,7 @@ commands:
 jobs:
   test_node_12:
     executor: node
-  working_directory: ~/repo/cats-client
+    working_directory: ~/repo/cats-client
     steps:
       - deploy_local:
           env: staging
