@@ -22,7 +22,7 @@ jobs:
     working_directory: ~/repo/cats-client
     steps:
       - deploy_local:
-          env: staging
+          env: "staging"
    
 
 workflows:
