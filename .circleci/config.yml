@@ -13,7 +13,10 @@ commands:
         type: string
         default: "dev"
     steps:
-      -run: sh deploy_local.sh << parameters.env >>
+      - run:
+        shell: /bin/sh
+        command: |
+          deploy_local.sh << parameters.env >>
 
 
 jobs:
