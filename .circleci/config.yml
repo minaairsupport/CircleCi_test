@@ -24,7 +24,7 @@ jobs:
     executor: node
     working_directory: ~/repo/cats-client
     steps:
-      - checkout:
+      - checkout
       - deploy_local:
           env: "staging"
    
