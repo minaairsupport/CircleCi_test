@@ -13,7 +13,7 @@ commands:
         type: string
         default: "dev"
     steps:
-      - run: sudo deploy_local.sh << parameters.env >>
+      - sudo deploy_local.sh << parameters.env >>
 
 
 jobs:
