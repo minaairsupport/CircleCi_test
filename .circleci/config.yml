@@ -6,14 +6,14 @@ executors:
       - image: circleci/node:10
       
 commands:
- deploy_local:
-   parameters:
+  deploy_local:
+    description: "run local script"
+    parameters:
       env:
-         description: run local script
-         type: string
-         default: dev
-  steps:
-   - sh deploy_local.sh << parameters.env >>
+        type: string
+        default: "dev"
+    steps:
+      - run: sh deploy_local.sh << parameters.env >>
 
 
 jobs:
